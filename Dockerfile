@@ -1,5 +1,5 @@
 # Используем официальный образ Python
-FROM python:3.9-slim
+FROM python:3.13-slim
 ENV PYTHONUNBUFFERED 1
 RUN mkdir /app
 WORKDIR /app
