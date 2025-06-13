@@ -57,7 +57,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
-    'http://83.222.9.213:9998'
+    'http://83.222.9.213:9997'
 ]
 
 ROOT_URLCONF = 'firedetection.urls'
