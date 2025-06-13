@@ -1,0 +1,32 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t fire-detection-api .
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: SSH into VM and deploy
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key
+          chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key root@83.222.9.213 << 'EOF'
+            cd /root/fire-detection-API
+            git pull
+            docker compose up --build -d
+          EOF

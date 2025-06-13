@@ -1,0 +1,6 @@
+services:
+  app:
+    build:
+      .
+    ports:
+      - "9999:7777"
