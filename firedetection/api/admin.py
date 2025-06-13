@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import FireEvent
 
-# Register your models here.
+@admin.register(FireEvent)
+class FireEventAdmin(admin.ModelAdmin):
+    pass
+    
