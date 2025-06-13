@@ -14,8 +14,6 @@ class FireEventSerializer(serializers.ModelSerializer):
             'confidence',
             'image_url',
             'x1', 'y1', 'x2', 'y2',
-            'processed',
-            'notification_sent'
         ]
     
     def get_image_url(self, obj):

@@ -88,7 +88,7 @@ class FireEventList(ListAPIView):
     """Список всех событий о пожарах"""
     queryset = FireEvent.objects.all()
     serializer_class = FireEventSerializer
-    permission_classes = [ListAPIView]
+    permission_classes = [AllowAny]
     
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -102,7 +102,7 @@ class FireEventDetail(RetrieveAPIView):
     """Детальная информация о конкретном событии"""
     queryset = FireEvent.objects.all()
     serializer_class = FireEventSerializer
-    permission_classes = [ListAPIView]
+    permission_classes = [AllowAny]
 
 class FireEventImageView(APIView):
     def get(self, request, pk):
