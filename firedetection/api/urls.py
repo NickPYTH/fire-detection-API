@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import FireDetectionAPI, FireEventList, FireEventDetail
+from .views import FireDetectionAPI, FireEventList, FireEventDetail, FireEventImageView
 from .models import FireEvent
 
 urlpatterns = [
@@ -13,4 +13,5 @@ urlpatterns = [
     # Дополнительные маршруты (по необходимости)
     path('events/latest/', FireEventList.as_view(queryset=FireEvent.objects.order_by('-detection_time')[:5]), 
          name='latest-fire-events'),
+    path('events/<int:pk>/image/', FireEventImageView.as_view()),  # Новый endpoint
 ]

@@ -38,3 +38,8 @@ class FireEvent(models.Model):
         
         filename = f"detection_{self.detection_time.strftime('%Y%m%d_%H%M%S')}.jpg"
         self.image.save(filename, ContentFile(buffer.getvalue()))
+
+    def get_image_url(self):
+        if self.image:
+            return f"/api/events/{self.id}/image/"
+        return None
